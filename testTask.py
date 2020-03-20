@@ -1,7 +1,11 @@
 ## the main test 
 import sys
 import platform
-sys.path.insert(1, './lib/' + platform.system())
+
+## In next line .. why 1? 
+sys.path.insert(1, 'lib/' + platform.system())
+## because 0 is the current directory
+
 from imageModel import ImageModel
 from modesEnum import Modes
 
