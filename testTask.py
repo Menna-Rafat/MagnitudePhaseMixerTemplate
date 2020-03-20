@@ -1,13 +1,15 @@
 ## the main test 
+import sys
+import platform
+sys.path.insert(1, './lib/' + platform.system())
 from imageModel import ImageModel
-from matplotlib import pyplot as plt
 from modesEnum import Modes
 
 from task3Test import Task3Test
 
 # Assign vaild paths to the following 2 variables
-image1Path : str = "test.jpg"
-image2Path : str = "test2.jpg"
+image1Path : str = ""
+image2Path : str = ""
 
 # this format --> 'variable : variableType' is called annotation
 # as you have noticed, python is not a static typed language, so many errors can happen by passing a different type than the expected one to a function
