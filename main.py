@@ -7,6 +7,7 @@ from <...> import Ui_MainWindow
 
 import sys
 
+from imageModel import ImageModel
 
 class ApplicationWindow(QtWidgets.QMainWindow):
     def __init__(self):
