@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>872</width>
+    <height>582</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="7" column="2">
+     <widget class="QComboBox" name="comboReal2">
+      <item>
+       <property name="text">
+        <string>Real</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Imagnire</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Phase </string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Magnitude</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QSlider" name="Slider_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QComboBox" name="comboReal1">
+      <item>
+       <property name="text">
+        <string>Real</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Imagnire</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Phase </string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Magnitude</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="11" column="2">
+     <widget class="QLabel" name="chaged_img2">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="output1">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="3">
+     <widget class="QLabel" name="img2">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="3">
+     <widget class="QPushButton" name="load2">
+      <property name="text">
+       <string>load img</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="changed_img1">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLabel" name="img1">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QComboBox" name="combo_out">
+      <item>
+       <property name="text">
+        <string>Output1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Output2</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QComboBox" name="comboReal3">
+      <property name="minimumSize">
+       <size>
+        <width>660</width>
+        <height>20</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>Real</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Imagnire</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Phase </string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Magnitude</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>uniform phase</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>uniform magnitude </string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QSlider" name="Slider1">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QComboBox" name="choose_img1">
+      <item>
+       <property name="text">
+        <string>Image1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Image2</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QComboBox" name="chooseReal4">
+      <item>
+       <property name="text">
+        <string>Real</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Imagnire</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Phase </string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Magnitude</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>uniform phase</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>uniform magnitude </string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPushButton" name="load1">
+      <property name="text">
+       <string>load img</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QComboBox" name="choose_img2">
+      <item>
+       <property name="text">
+        <string>Image1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Image2</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Image1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="3">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Image2</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="output2">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>load1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>getImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>126</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>435</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>load2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>getImage()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>207</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>435</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboReal1</sender>
+   <signal>activated(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>getMagnitude()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>435</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>getImage()</slot>
+  <slot>getMagnitude()</slot>
+ </slots>
+</ui>
