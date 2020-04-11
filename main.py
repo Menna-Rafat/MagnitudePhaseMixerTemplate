@@ -6,7 +6,7 @@
 
 import sys
 
-
+import warnings
 from imageModel import ImageModel
 from PyQt5 import QtWidgets , QtGui
 from image import Ui_MainWindow
@@ -50,51 +50,65 @@ class ApplicationWindow(QtWidgets.QMainWindow):
          comboxes =[self.ui.comboReal1,self.ui.comboReal2,
                self.ui.comboReal3,self.ui.chooseReal4]
          for i in comboxes:
-             if self.comboxes[i].currentText() == "Magnitude":
-                 self.getMagnitude()
-             elif self.comboxes[i].currentText() == "Phase":
-                 self.getPhase()
-             elif self.comboxes[i].currentText() == "Real" :
-                 self.getReal()
+             if self.i.currentText() == "Magnitude":
+                 self.getMagnitude(i)
+             elif self.i.currentText() == "Phase":
+                 self.getPhase(i)
+             elif self.i.currentText() == "Real" :
+                 self.getReal(i)
              else: 
-                self.getImaginary()
+                self.getImaginary(i)
     def getImage2(self):
-        global fname
-        fname = QFileDialog.getOpenFileName(self, 'Open file', '' , "*.jpg *.gif *.png" )[0]
+        global fname2
+        fname2 = QFileDialog.getOpenFileName(self, 'Open file', '' , "*.jpg *.gif *.png" )[0]
         global img2 
-        img2 = cv.imread(fname,0)
-        
-        pixmap = QPixmap(fname)
-        self.ui.img2.setPixmap(QPixmap(pixmap)) 
+        img2 = cv.imread(fname2,0)
+        if img2.shape == img.shape:
+            pixmap2 = QPixmap(fname2)
+            self.ui.img2.setPixmap(QPixmap(pixmap2))
+        else :
+            warnings.warn("images are not the same size")
            
     def getMagnitude(self,string):
-        global fshift
-        f = np.fft.fft2(img)
-        fshift = np.fft.fftshift(f)
-        magnitude_spectrum = 20*np.log(np.abs(fshift))
+        global fshift , fshift2
         
-        base_image = QtGui.QImage(magnitude_spectrum.shape[0], magnitude_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
-        pixmap = QPixmap(base_image)
         if string == self.ui.comboReal1:
-            self.ui.changed_img1.setPixmap(QPixmap(pixmap))
+           f = np.fft.fft2(img)
+           fshift = np.fft.fftshift(f)
+           magnitude_spectrum = 20*np.log(np.abs(fshift))
+        
+           base_image = QtGui.QImage(magnitude_spectrum.shape[0], magnitude_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
+           pixmap = QPixmap(base_image)
+           self.ui.changed_img1.setPixmap(QPixmap(pixmap))
         elif string == self.ui.comboReal2:
+            f = np.fft.fft2(img2)
+            fshift2 = np.fft.fftshift(f)
+            magnitude_spectrum = 20*np.log(np.abs(fshift2))
+        
+            base_image = QtGui.QImage(magnitude_spectrum.shape[0], magnitude_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
+            pixmap = QPixmap(base_image)
             self.ui.changed_img2.setPixmap(QPixmap(pixmap))
         
         
     def getPhase(self,string):
-        phase_spectrum = np.angle(fshift)
-        pixmap = QPixmap(phase_spectrum)
-        self.ui.changed_img1.setPixmap(QPixmap(pixmap))
-        base_image = QtGui.QImage(phase_spectrum.shape[0], phase_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
-        pixmap = QPixmap(base_image)
         if string == self.ui.comboReal1:
+            phase_spectrum = np.angle(fshift)
+            pixmap = QPixmap(phase_spectrum)
+            self.ui.changed_img1.setPixmap(QPixmap(pixmap))
+            base_image = QtGui.QImage(phase_spectrum.shape[0], phase_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
+            pixmap = QPixmap(base_image)
             self.ui.changed_img1.setPixmap(QPixmap(pixmap))
         elif string == self.ui.comboReal2:
+            phase_spectrum = np.angle(fshift2)
+            pixmap = QPixmap(phase_spectrum)
+            self.ui.changed_img1.setPixmap(QPixmap(pixmap))
+            base_image = QtGui.QImage(phase_spectrum.shape[0], phase_spectrum.shape[1], QtGui.QImage.Format_ARGB32)
+            pixmap = QPixmap(base_image)
             self.ui.changed_img2.setPixmap(QPixmap(pixmap))
           
      
     def getReal(self,string):
-        
+        global real
         real = np.real(fshift)
         pixmap = QPixmap(real)
         if string == self.ui.comboReal1:
@@ -110,14 +124,28 @@ class ApplicationWindow(QtWidgets.QMainWindow):
             self.ui.changed_img1.setPixmap(QPixmap(pixmap))
         elif string == self.ui.comboReal2:
             self.ui.changed_img2.setPixmap(QPixmap(pixmap))
-        
-
-class ApplicationWindow(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(ApplicationWindow, self).__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-
+            
+    def mix (self):
+        if self.ui.comboReal3.findText('Real') or ('imaginary'):
+           self.add = ["Imaginary" , 'Real']
+           self.ui.chooseReal4.clear()
+           self.ui.chooseReal4.addItems(self.add)
+           out = real * imag 
+           pixmap = QPixmap(out)
+           if self.ui.combo_out.findText('Output1'):
+               self.ui.output1.setPixmap(QPixmap(pixmap))
+           elif self.ui.combo_out.findText('Output2'):
+                self.ui.output2.setPixmap(QPixmap(pixmap))
+                
+        if self.ui.comboReal3.findText('Phase') or ('Magnitude'):
+           self.add = ['Magnitude',"Phase", 'uniform phase','uniform magnitude ']
+           self.ui.chooseReal4.clear()
+           self.ui.chooseReal4.addItems(self.add)
+           out = phase_spectrum * math.exp(magnitude_spectrum *1j)
+           pixmap = QPixmap(out)
+           if self.ui.combo_out.findText('Output1'):
+               self.ui.output1.setPixmap(QPixmap(pixmap))
+                
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
